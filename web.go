@@ -38,6 +38,8 @@ var (
 	token = mustGetenv("TOKEN")
 )
 
+var ErrInvalidToken = errors.New("Invalid access token")
+
 func main() {
 	if err := innerMain(); err != nil {
 		panic(err)
@@ -61,7 +63,7 @@ func innerMain() error {
 				tokenHeader := req.Header.Get(TokenHeader)
 				// Since token is never empty, we do not have to handle that case.
 				if tokenHeader != token {
-					return errors.New("Invalid access token")
+					return ErrInvalidToken
 				}
 				return nil
 			},
