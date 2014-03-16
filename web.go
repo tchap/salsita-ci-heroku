@@ -21,8 +21,10 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"os/signal"
+	"syscall"
 
 	"github.com/cider/cider/broker"
 	"github.com/cider/cider/broker/exchanges/rpc/roundrobin"
