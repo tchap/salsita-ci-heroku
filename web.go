@@ -18,6 +18,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -60,7 +61,7 @@ func innerMain() error {
 				tokenHeader := req.Header.Get(TokenHeader)
 				// Since token is never empty, we do not have to handle that case.
 				if tokenHeader != token {
-					return ErrInvalidToken
+					return errors.New("Invalid access token")
 				}
 				return nil
 			},
